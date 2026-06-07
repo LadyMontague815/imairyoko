@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryoko Imai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { background: #f8f5f2; color: #1e1a18; font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; border-bottom: 0.5px solid #d8d0ca; }
+    .nav-name { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2.5rem; }
+    .nav-links a { font-size: 12px; color: #999; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-links a:hover { color: #9E6B7A; }
+
+    /* HERO */
+    .hero { padding: 6rem 3rem 5rem; border-bottom: 0.5px solid #d8d0ca; }
+    .hero-pre { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #9E6B7A; font-weight: 500; margin-bottom: 2rem; }
+    .hero-name { font-family: 'Playfair Display', serif; font-size: 76px; font-weight: 400; line-height: 0.95; margin-bottom: 2.5rem; letter-spacing: -0.01em; }
+    .hero-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; }
+    .hero-bio { font-size: 18px; line-height: 1.8; color: #444; max-width: 420px; }
+    .hero-bio em { font-family: 'Playfair Display', serif; font-style: italic; color: #1e1a18; }
+    .hero-creds { display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
+    .cred { font-size: 12px; color: #aaa; text-align: right; }
+    .cred strong { display: block; font-size: 12px; font-weight: 500; color: #666; }
+
+    /* SECTIONS */
+    .sec { padding: 3.5rem 3rem; border-bottom: 0.5px solid #d8d0ca; }
+    .sec-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9E6B7A; font-weight: 500; margin-bottom: 1.75rem; }
+
+    /* WRITING */
+    .writing-list { display: flex; flex-direction: column; }
+    .wi { display: grid; grid-template-columns: 1fr auto; gap: 2rem; padding: 1.1rem 0; border-bottom: 0.5px solid #d8d0ca; }
+    .wi:first-child { border-top: 0.5px solid #d8d0ca; }
+    .wi:hover .wi-title { color: #9E6B7A; }
+    .wi-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: #1e1a18; transition: color 0.2s; }
+    .wi-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .wi-date { font-size: 11px; color: #ccc; white-space: nowrap; padding-top: 4px; }
+    .see-all { display: inline-block; margin-top: 1.25rem; font-size: 11px; color: #9E6B7A; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+    .see-all:hover { color: #7a4f5e; }
+
+    /* GAMES */
+    .games-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .gc { background: #ede6e1; padding: 2.25rem; border: 0.5px solid #d8d0ca; }
+    .gc-type { font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: #9E6B7A; font-weight: 500; margin-bottom: 0.75rem; }
+    .gc-title { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 400; color: #1e1a18; margin-bottom: 0.75rem; line-height: 1.2; }
+    .gc-desc { font-size: 13px; color: #777; line-height: 1.8; margin-bottom: 1.25rem; }
+    .gc-link { font-size: 11px; color: #9E6B7A; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+    .gc-link:hover { color: #7a4f5e; }
+
+    /* WORK */
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; border: 0.5px solid #d8d0ca; }
+    .wc { padding: 2.25rem; border-right: 0.5px solid #d8d0ca; border-bottom: 0.5px solid #d8d0ca; }
+    .wc:nth-child(even) { border-right: none; }
+    .wc:nth-last-child(-n+2) { border-bottom: none; }
+    .wc-type { font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: #9E6B7A; font-weight: 500; margin-bottom: 0.6rem; }
+    .wc-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 400; color: #1e1a18; margin-bottom: 0.5rem; line-height: 1.2; }
+    .wc-desc { font-size: 13px; color: #888; line-height: 1.75; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; }
+    .about-text { font-size: 15px; line-height: 1.95; color: #555; }
+    .about-text p + p { margin-top: 1rem; }
+    .about-text em { font-family: 'Playfair Display', serif; font-style: italic; color: #1e1a18; }
+    .about-links { display: flex; flex-direction: column; }
+    .al { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; border-bottom: 0.5px solid #d8d0ca; font-size: 13px; color: #555; gap: 1rem; transition: color 0.2s; }
+    .al:first-child { border-top: 0.5px solid #d8d0ca; }
+    .al:hover { color: #9E6B7A; }
+    .al-arr { color: #ccc; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 12px; color: #ccc; }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 12px; color: #bbb; transition: color 0.2s; }
+    .footer-links a:hover { color: #9E6B7A; }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      .hero { padding: 3.5rem 1.5rem 3rem; }
+      .hero-name { font-size: 52px; }
+      .hero-body { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-creds { align-items: flex-start; }
+      .cred { text-align: left; }
+      .sec { padding: 2.5rem 1.5rem; }
+      .games-grid { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
+      .wc:nth-child(even) { border-right: 0.5px solid #d8d0ca; }
+      .wc { border-right: none; border-bottom: 0.5px solid #d8d0ca; }
+      .wc:last-child { border-bottom: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Ryoko Imai</div>
+  <div class="nav-links">
+    <a href="#writing">Writing</a>
+    <a href="#work">Work</a>
+    <a href="#games">Games</a>
+    <a href="#about">About</a>
+    <a href="mailto:ryoko@ruminata.co">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-pre">Social scientist · Futurist · Game designer</div>
+  <div class="hero-name">Ryoko<br>Imai</div>
+  <div class="hero-body">
+    <p class="hero-bio">I study how people make sense of <em>complex, uncertain things</em> — and build tools to help them engage with what's difficult. My work takes many forms: research, facilitation, foresight, games, writing.</p>
+    <div class="hero-creds">
+      <div class="cred"><strong>Principal Research Scientist</strong>Hitachi America R&D</div>
+      <div class="cred"><strong>PhD, Comparative Human Development</strong>University of Chicago</div>
+      <div class="cred"><strong>Global Future Council on AI</strong>World Economic Forum</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="writing">
+  <div class="sec-label">Recent writing</div>
+  <div class="writing-list">
+    <a class="wi" href="https://ruminata.substack.com/p/who-really-started-the-la-wildfires" target="_blank">
+      <div>
+        <div class="wi-title">Who really started the LA wildfires?</div>
+        <div class="wi-sub">Conspiracy theories may be a symptom, not a cause, of our collective trauma</div>
+      </div>
+      <div class="wi-date">Jan 2025</div>
+    </a>
+    <a class="wi" href="https://ruminata.substack.com/p/should-you-delete-facebook" target="_blank">
+      <div>
+        <div class="wi-title">Should you delete Facebook?</div>
+        <div class="wi-sub">Maybe, but not just because of its weirdo CEO</div>
+      </div>
+      <div class="wi-date">Feb 2025</div>
+    </a>
+    <a class="wi" href="https://ruminata.substack.com/p/feeling-anxious-get-a-kitten" target="_blank">
+      <div>
+        <div class="wi-title">Feeling anxious? Get a kitten</div>
+        <div class="wi-sub">Apparently I've always been a cat person with anxiety</div>
+      </div>
+      <div class="wi-date">Jan 2025</div>
+    </a>
+  </div>
+  <a class="see-all" href="https://ruminata.substack.com" target="_blank">All writing →</a>
+</section>
+
+<section class="sec" id="games">
+  <div class="sec-label">Games</div>
+  <div class="games-grid">
+    <div class="gc">
+      <div class="gc-type">Solo journaling game</div>
+      <div class="gc-title">A lunch date with past and future</div>
+      <div class="gc-desc">An invitation to sit down with your past and future selves over lunch — and actually talk. Uses playfulness to sneak in the real questions about who you are, who you were, and where you're going.</div>
+      <a class="gc-link" href="https://ruminata.itch.io/a-lunch-date-with-your-past-and-future" target="_blank">Play free on itch.io →</a>
+    </div>
+    <div class="gc">
+      <div class="gc-type">Solo journaling game · Horror</div>
+      <div class="gc-title">Punctured</div>
+      <div class="gc-desc">In a post-Roe U.S., pregnancies begin happening to men. A speculative, uncomfortable, necessary game — using role-play to make visible what's usually invisible about bodily autonomy and social reality.</div>
+      <a class="gc-link" href="https://ruminata.itch.io/punctured" target="_blank">Get on itch.io — $6 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="sec-label">Work & research</div>
+  <div class="work-grid">
+    <div class="wc">
+      <div class="wc-type">Methodology</div>
+      <div class="wc-title">Foresight</div>
+      <div class="wc-desc">A systematic approach to navigating uncertainty — built for the messy reality of how organizations actually think and decide.</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Research</div>
+      <div class="wc-title">AI ethics</div>
+      <div class="wc-desc">Pioneering sociocultural research on the ethical implications of AI, including co-authoring the WEF's blueprint for equity and inclusion.</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Initiative</div>
+      <div class="wc-title">Harmony Studio</div>
+      <div class="wc-desc">A cross-company space for deepening human intelligence in the era of AI. Co-founded at Hitachi America, 2025.</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Research</div>
+      <div class="wc-title">Sustainability</div>
+      <div class="wc-desc">Examining the organizational, cultural, and historical barriers that stand between us and actually achieving sustainability goals.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="sec-label">About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I've spent my career figuring out how to get people to genuinely engage with hard ideas. Not just present them — <em>engage</em> with them. That requires understanding how people think, what makes them feel safe enough to participate, and what it takes to hold space for the complicated thing instead of collapsing it into something easier.</p>
+      <p>That instinct runs through everything I do: the research, the foresight methodology, the games, the writing. The medium changes. The project is the same.</p>
+      <p>Based in Los Angeles. Originally from Japan.</p>
+    </div>
+    <div class="about-links">
+      <a class="al" href="https://www.weforum.org/publications/a-blueprint-for-equity-and-inclusion-in-artificial-intelligence/" target="_blank">
+        <span>A Blueprint for Equity and Inclusion in AI — WEF</span><span class="al-arr">↗</span>
+      </a>
+      <a class="al" href="https://ruminata.substack.com" target="_blank">
+        <span>Embracing tension in futures thinking — 4S 2023</span><span class="al-arr">↗</span>
+      </a>
+      <a class="al" href="https://www.iftf.org" target="_blank">
+        <span>IFTF Foresight Talk: Design at Hitachi</span><span class="al-arr">↗</span>
+      </a>
+      <a class="al" href="https://epicpeople.org" target="_blank">
+        <span>EPIC — contributor since 2016</span><span class="al-arr">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2026 Ryoko Imai</div>
+  <div class="footer-links">
+    <a href="https://ruminata.substack.com" target="_blank">Substack</a>
+    <a href="https://www.linkedin.com/in/ryokoimai" target="_blank">LinkedIn</a>
+    <a href="mailto:ryoko@ruminata.co">Email</a>
+  </div>
+</footer>
+
+</body>
+</html>
